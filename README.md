@@ -1,158 +1,316 @@
-# Problem 2: Array Transformation Cost Minimization 
+# Problem 2: Array Transformation Cost Minimization
 
-You are given an integer array A of size N. You can perform the following operation any 
-number of times: 
-• Choose any index i and replace A[i] with A[i] + K or A[i] - K, where K is a fixed 
-integer.  
-# Your goal is to: 
-• Transform the array such that all elements become equal.  
-• Return the minimum total number of operations required, or -1 if it is not possible.  
- # Input Format: 
-• First line: Integer N  
-• Second line: N space-separated integers (array A)  
-• Third line: Integer K  
-  Output Format: 
-• Print minimum number of operations or -1  
-  Constraints: 
-• 1≤N≤105 
-• 1≤A[i],K≤109  
-  Example: 
-# Input: 
-5 
-2 4 6 8 10 
-2 
-# Output: 
-6 
-# Explanation: 
-# Convert all elements to 6: 
-• 2 → 6 (2 steps)  
-• 4 → 6 (1 step)  
-• 6 → 6 (0 steps)  
-• 8 → 6 (1 step)  
-• 10 → 6 (2 steps)  
-Total operations = 6
+## Problem Statement
 
-# Approach Used :
+You are given an integer array `A` of size `N`. You can perform the following operation any number of times:
 
-# Step 1: Input Array and K
-Read:
-Size of array N
-Array elements
-Integer K
+* Choose any index `i` and replace:
 
-# Step 2: Check Possibility
-To make all numbers equal:
-Difference between every element and the target must be divisible by K
-# Condition:
-#(A[i] - A[0]) % K == 0
-#If any element fails this condition:
-#Output = -1
+```text
+A[i] = A[i] + K
+or
+A[i] = A[i] - K
+```
 
-Reason:
+where `K` is a fixed integer.
 
-We can only move numbers in multiples of K
-# Step 3: Sort the Array
-Sort the array using qsort()
+## Goal
 
-Why sorting?
-The median minimizes the total number of operations
+* Transform the array such that all elements become equal.
+* Return the minimum total number of operations required.
+* If it is not possible, return `-1`.
 
-# Step 4: Choose Median as Target
+---
 
-Target element:
+# Input Format
 
-target = a[n/2]
+* First line: Integer `N`
+* Second line: `N` space-separated integers (Array `A`)
+* Third line: Integer `K`
 
-#Reason:
-Minimum total absolute difference occurs at the median
+---
 
-# Step 5: Count Operations
-For every element:
-# operations += abs(A[i] - target) / K
+# Output Format
 
-This gives:
-Number of steps needed to convert each element into target
+* Print the minimum number of operations or `-1`.
 
-#Example
-Input:
+---
+
+# Constraints
+
+```text
+1 ≤ N ≤ 10^5
+1 ≤ A[i], K ≤ 10^9
+```
+
+---
+
+# Example
+
+## Input
+
+```text
 5
 2 4 6 8 10
 2
+```
 
-Sorted Array:
+## Output
 
+```text
+6
+```
+
+---
+
+# Explanation
+
+Convert all elements to `6`:
+
+```text
+2  -> 6  = 2 steps
+4  -> 6  = 1 step
+6  -> 6  = 0 step
+8  -> 6  = 1 step
+10 -> 6  = 2 steps
+```
+
+Total Operations:
+
+```text
+6
+```
+
+---
+
+# Approach Used
+
+## Step 1: Input Array and K
+
+Read:
+
+* Size of array `N`
+* Array elements
+* Integer `K`
+
+---
+
+## Step 2: Check Possibility
+
+To make all elements equal:
+
+* The difference between every element and the target must be divisible by `K`.
+
+### Condition
+
+```c
+(A[i] - A[0]) % K == 0
+```
+
+If any element fails this condition:
+
+```text
+Output = -1
+```
+
+### Reason
+
+We can only increase or decrease numbers in multiples of `K`.
+
+---
+
+## Step 3: Sort the Array
+
+Sort the array using:
+
+```c
+qsort()
+```
+
+### Why Sorting?
+
+The median minimizes the total number of operations.
+
+---
+
+## Step 4: Choose Median as Target
+
+### Target Element
+
+```c
+target = a[n/2]
+```
+
+### Reason
+
+The minimum total absolute difference is achieved at the median.
+
+---
+
+## Step 5: Count Operations
+
+For every element:
+
+```c
+operations += abs(A[i] - target) / K;
+```
+
+This calculates:
+
+* Number of operations required to convert each element into the target.
+
+---
+
+# Working Example
+
+## Input
+
+```text
+5
 2 4 6 8 10
+2
+```
 
-Median:
+## Sorted Array
 
+```text
+2 4 6 8 10
+```
+
+## Median
+
+```text
 6
+```
 
-Operations:
--->> 2 -> 6 = 2 steps
--->> 4 -> 6 = 1 step
--->> 6 -> 6 = 0 step
--->> 8 -> 6 = 1 step
--->> 10 -> 6 = 2 steps
+## Operations
 
-#Total:
+```text
+2  -> 6  = 2 steps
+4  -> 6  = 1 step
+6  -> 6  = 0 step
+8  -> 6  = 1 step
+10 -> 6  = 2 steps
+```
+
+## Total
+
+```text
 6
+```
 
-#Output:
---Minimum Operations: 6
+## Output
+
+```text
+Minimum Operations: 6
+```
+
+---
 
 # Time Complexity
-#Sorting:
---O(N log N)
 
-#Traversing Array:
---O(N)
+## Sorting
 
-#Overall Complexity:
---O(N log N)
+```text
+O(N log N)
+```
 
---Space Complexity
---O(1)
---(Excluding input array storage)
+## Array Traversal
+
+```text
+O(N)
+```
+
+## Overall Time Complexity
+
+```text
+O(N log N)
+```
+
+Efficient for:
+
+```text
+N ≤ 100000
+```
+
+---
+
+# Space Complexity
+
+```text
+O(1)
+```
+
+(Excluding input array storage)
+
+---
 
 # Techniques Used
-#Sorting
-#Median Optimization
-#Greedy Approach
-#Mathematical Divisibility Check
 
-# Sample Inputs and there Outputs :
-# // Output***:
+* Sorting
+* Median Optimization
+* Greedy Approach
+* Mathematical Divisibility Check
 
->PS E:\Advance Coding 2> cd "e:\Advance Coding 2\" ; if ($?) { gcc main.c -o main } ; if ($?) { .\main }
+---
 
->>Enter size: 5
+# Sample Input and Output
 
->>Enter array elements: 2 4 6 8 10
+## Valid Case
 
->>Enter K: 2
+```text
+PS E:\Advance Coding 2> gcc main.c -o main
+PS E:\Advance Coding 2> ./main
 
->>Minimum Operations: 6
+Enter size: 5
+Enter array elements: 2 4 6 8 10
+Enter K: 2
 
->>PS E:\Advance Coding 2> ./main                                                                                  
+Minimum Operations: 6
+```
 
->>Enter size: 10
+---
 
->>Enter array elements: 8 7 3 6 23 5 9 10 4 0
+## Invalid Case
 
->>Enter K: 4
->>-1
+```text
+PS E:\Advance Coding 2> ./main
 
->>PS E:\Advance Coding 2>
+Enter size: 10
+Enter array elements: 8 7 3 6 23 5 9 10 4 0
+Enter K: 4
 
-# Invalid Case:
-#• Enter size: 3
-#• Enter array elements: 1 2 3
-#• Enter K: 2
-#• -1
+-1
+```
 
-# Reason:
-Elements cannot become equal using only ±2 operations.
+### Reason
 
-# Shubham Kumar
-# Linked In:
- https://www.linkedin.com/in/shubham-kumar-b21037295/
+Elements cannot become equal using only `±4` operations.
+
+---
+
+# Another Invalid Example
+
+```text
+Enter size: 3
+Enter array elements: 1 2 3
+Enter K: 2
+
+-1
+```
+
+### Reason
+
+All elements cannot be converted into the same value using only `±2`.
+
+---
+
+# Author
+
+## Shubham Kumar
+
+## LinkedIn
+
+```text
+https://www.linkedin.com/in/shubham-kumar-b21037295/
+```
