@@ -1,3 +1,5 @@
+// # Problem 2: Array Transformation Cost Minimization
+
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -60,3 +62,17 @@ printf("Minimum Operations: %lld\n",operations);
 
 return 0;
 }
+
+// # Output:
+
+// PS E:\Advance Coding 2> cd "e:\Advance Coding 2\" ; if ($?) { gcc main.c -o main } ; if ($?) { .\main }
+// Enter size: 5
+// Enter array elements: 2 4 6 8 10
+// Enter K: 2
+// Minimum Operations: 6
+// PS E:\Advance Coding 2>./main                                                                                  
+// Enter size: 10
+// Enter array elements: 8 7 3 6 23 5 9 10 4 0
+// Enter K: 4
+// -1
+// PS E:\Advance Coding 2>
