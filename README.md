@@ -51,34 +51,30 @@ Difference between every element and the target must be divisible by K
 Reason:
 
 We can only move numbers in multiples of K
-Step 3: Sort the Array
+# Step 3: Sort the Array
 Sort the array using qsort()
 
 Why sorting?
-
 The median minimizes the total number of operations
-Step 4: Choose Median as Target
+
+# Step 4: Choose Median as Target
 
 Target element:
 
 target = a[n/2]
 
-Reason:
-
+#Reason:
 Minimum total absolute difference occurs at the median
-Step 5: Count Operations
 
+# Step 5: Count Operations
 For every element:
-
-operations += abs(A[i] - target) / K
+# operations += abs(A[i] - target) / K
 
 This gives:
-
 Number of steps needed to convert each element into target
-Example
 
+#Example
 Input:
-
 5
 2 4 6 8 10
 2
@@ -92,33 +88,31 @@ Median:
 6
 
 Operations:
+-->> 2 -> 6 = 2 steps
+-->> 4 -> 6 = 1 step
+-->> 6 -> 6 = 0 step
+-->> 8 -> 6 = 1 step
+-->> 10 -> 6 = 2 steps
 
-2 -> 6 = 2 steps
-4 -> 6 = 1 step
-6 -> 6 = 0 step
-8 -> 6 = 1 step
-10 -> 6 = 2 steps
-
-Total:
-
+#Total:
 6
 
-Output:
+#Output:
+--Minimum Operations: 6
 
-Minimum Operations: 6
-Time Complexity
-Sorting:
-O(N log N)
-Traversing Array:
-O(N)
-Overall Complexity:
-O(N log N)
+# Time Complexity
+#Sorting:
+--O(N log N)
 
-# Efficient for:
-#N ≤ 100000
-#Space Complexity
-#O(1)
-#(Excluding input array storage)
+#Traversing Array:
+--O(N)
+
+#Overall Complexity:
+--O(N log N)
+
+--Space Complexity
+--O(1)
+--(Excluding input array storage)
 
 # Techniques Used
 #Sorting
@@ -126,22 +120,39 @@ O(N log N)
 #Greedy Approach
 #Mathematical Divisibility Check
 
-# Program Execution Example
-#• PS E:\Advance Coding 1> gcc main.c -o main
-#• PS E:\Advance Coding 1> ./main
+# Sample Inputs and there Outputs :
+# // Output***:
 
-#• Enter size: 5
-#• Enter array elements: 2 4 6 8 10
-#• Enter K: 2
-#• Minimum Operations: 6
+>PS E:\Advance Coding 2> cd "e:\Advance Coding 2\" ; if ($?) { gcc main.c -o main } ; if ($?) { .\main }
+
+>>Enter size: 5
+
+>>Enter array elements: 2 4 6 8 10
+
+>>Enter K: 2
+
+>>Minimum Operations: 6
+
+>>PS E:\Advance Coding 2> ./main                                                                                  
+
+>>Enter size: 10
+
+>>Enter array elements: 8 7 3 6 23 5 9 10 4 0
+
+>>Enter K: 4
+>>-1
+
+>>PS E:\Advance Coding 2>
 
 # Invalid Case:
-
 #• Enter size: 3
 #• Enter array elements: 1 2 3
 #• Enter K: 2
 #• -1
 
 # Reason:
+Elements cannot become equal using only ±2 operations.
 
-#Elements cannot become equal using only ±2 operations.
+# Shubham Kumar
+# Linked In:
+ https://www.linkedin.com/in/shubham-kumar-b21037295/
